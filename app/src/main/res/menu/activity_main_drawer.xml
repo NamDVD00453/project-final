@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+<!--    <group android:checkableBehavior="single">-->
+<!--        <item-->
+<!--            android:id="@+id/nav_camera"-->
+<!--            android:icon="@drawable/ic_menu_camera"-->
+<!--            android:title="Up ảnh" />-->
+<!--        <item-->
+<!--            android:id="@+id/nav_gallery"-->
+<!--            android:icon="@drawable/ic_menu_gallery"-->
+<!--            android:title="Thư viện" />-->
+<!--        <item-->
+<!--            android:id="@+id/nav_slideshow"-->
+<!--            android:icon="@drawable/ic_menu_slideshow"-->
+<!--            android:title="Video" />-->
+<!--        <item-->
+<!--            android:id="@+id/nav_manage"-->
+<!--            android:icon="@drawable/ic_menu_manage"-->
+<!--            android:title="Công cụ" />-->
+<!--    </group>-->
+
+    <item android:title="Cá nhân">
+        <menu>
+            <item
+                android:id="@+id/nav_info"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Thông tin tài khoản" />
+            <item
+                android:id="@+id/nav_order"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Lịch sử đặt chỗ" />
+            <item
+                android:id="@+id/nav_self"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Dành riêng cho bạn" />
+        </menu>
+    </item>
+
+    <item android:title="Danh mục">
+        <menu>
+            <item
+                android:id="@+id/nav_hot"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Khuyến mại hot" />
+            <item
+                android:id="@+id/nav_news"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Khuyến mại mới" />
+            <item
+                android:id="@+id/nav_near"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Gần bạn" />
+        </menu>
+    </item>
+
+    <item android:title="Hỗ trợ">
+        <menu>
+            <item
+                android:id="@+id/nav_support"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Chăm sóc khách hàng" />
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Về DealHunter" />
+        </menu>
+    </item>
+    <group>
+        <item android:title="Dealhunter v1.01 copyright FOCUS Team"/>
+    </group>
+
+</menu>
