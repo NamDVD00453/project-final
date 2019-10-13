@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swLayout"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     tools:showIn="@layout/app_bar_main"
     android:orientation="vertical"
-    android:background="@color/colorDarkBackground">
+    android:background="@color/colorDarkBackground"
+    android:layout_marginTop="60dp">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -15,167 +16,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-            <LinearLayout
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvVoucher"
                 android:layout_width="match_parent"
-                android:layout_height="280dp"
-                android:orientation="vertical"
-                android:layout_marginTop="2dp"
-                tools:ignore="MissingConstraints"
-                android:background="@android:color/white">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="220dp"
-                    android:background="@android:color/black"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:id="@+id/tvThumb"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/maxresdefault" />
-                </LinearLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:id="@+id/ivAvatar"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:src="@drawable/avatar"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:background="@drawable/rounded"/>
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/ivAvatar">
-                        <TextView
-                            android:id="@+id/tvTitle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginVertical="8dp"
-                            android:text="Minecraft Introduction"
-                            android:textStyle="bold"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/tvTitle"
-                            android:text="DNZakmin · 1,5 Tr lượt xem · 2 tháng trước"/>
-                    </RelativeLayout>
-                </RelativeLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="280dp"
-                android:orientation="vertical"
-                android:layout_marginTop="6dp"
-                tools:ignore="MissingConstraints"
-                android:background="@android:color/white">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="220dp"
-                    android:background="@android:color/black"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:id="@+id/tvThumb2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/maxresdefault" />
-                </LinearLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:id="@+id/ivAvatar2"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:src="@drawable/avatar"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:background="@drawable/rounded"/>
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/ivAvatar2">
-                        <TextView
-                            android:id="@+id/tvTitle2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginVertical="8dp"
-                            android:text="Minecraft Introduction"
-                            android:textStyle="bold"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/tvTitle2"
-                            android:text="DNZakmin · 1,5 Tr lượt xem · 2 tháng trước"/>
-                    </RelativeLayout>
-                </RelativeLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="280dp"
-                android:orientation="vertical"
-                android:layout_marginTop="6dp"
-                tools:ignore="MissingConstraints"
-                android:background="@android:color/white">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="220dp"
-                    android:background="@android:color/black"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:id="@+id/tvThumb3"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/maxresdefault" />
-                </LinearLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:id="@+id/ivAvatar3"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:src="@drawable/avatar"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:background="@drawable/rounded"/>
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/ivAvatar3">
-                        <TextView
-                            android:id="@+id/tvTitle3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginVertical="8dp"
-                            android:text="Minecraft Introduction"
-                            android:textStyle="bold"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/tvTitle3"
-                            android:text="DNZakmin · 1,5 Tr lượt xem · 2 tháng trước"/>
-                    </RelativeLayout>
-                </RelativeLayout>
-            </LinearLayout>
+                android:layout_height="match_parent"
+                android:layout_margin="8dp">
+            </android.support.v7.widget.RecyclerView>
         </LinearLayout>
     </ScrollView>
-
-
-
-</LinearLayout>
+</android.support.v4.widget.SwipeRefreshLayout>
