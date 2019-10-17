@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OrderHistoryDetail"
+    android:orientation="vertical"
+    android:background="@color/cardview_shadow_end_color">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16px"
+            android:orientation="vertical"
+            android:background="@color/cardview_shadow_end_color">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/done"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="16px"
+                android:background="#FFFFFF">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Transaction ID"
+                    android:layout_marginLeft="12px"
+                    android:layout_marginVertical="12px"
+                    android:textSize="45px"/>
+
+                <TextView
+                    android:id="@+id/tvTransId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="12px"
+                    android:layout_marginRight="12px"
+                    android:text="12313213213"
+                    android:textAlignment="textEnd"
+                    android:textSize="45px" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="16px"
+                android:background="#FFFFFF">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Guest Name"
+                    android:layout_marginLeft="12px"
+                    android:layout_marginVertical="12px"
+                    android:textSize="45px"/>
+
+                <TextView
+                    android:id="@+id/tvGuestName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="12px"
+                    android:layout_marginRight="12px"
+                    android:text="DNZakmin"
+                    android:textAlignment="textEnd"
+                    android:textSize="45px" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="16px"
+                android:background="#FFFFFF">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Phone Number"
+                    android:layout_marginLeft="12px"
+                    android:layout_marginVertical="12px"
+                    android:textSize="45px"/>
+
+                <TextView
+                    android:id="@+id/tvGuestPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="12px"
+                    android:layout_marginRight="12px"
+                    android:text="0988345345"
+                    android:textAlignment="textEnd"
+                    android:textSize="45px" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="16px"
+                android:background="#FFFFFF">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:layout_marginLeft="12px"
+                    android:layout_marginVertical="12px"
+                    android:textSize="45px"/>
+
+                <TextView
+                    android:id="@+id/tvEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="12px"
+                    android:layout_marginRight="12px"
+                    android:text="namdvd00453@fpt.edu.vn"
+                    android:textAlignment="textEnd"
+                    android:textSize="45px" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="16px"
+                android:layout_marginTop="16px"
+                android:background="#FFFFFF">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Voucher Code"
+                    android:layout_marginLeft="12px"
+                    android:layout_marginVertical="12px"
+                    android:textSize="45px"/>
+
+                <TextView
+                    android:id="@+id/tvCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="12px"
+                    android:layout_marginRight="12px"
+                    android:text="ABCXYZ"
+                    android:textAlignment="textEnd"
+                    android:textSize="45px" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="16px"
+                android:background="#FFFFFF">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Discount"
+                    android:layout_marginLeft="12px"
+                    android:layout_marginVertical="12px"
+                    android:textSize="45px"/>
+
+                <TextView
+                    android:id="@+id/tvSale"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="12px"
+                    android:layout_marginRight="12px"
+                    android:text="20% OFF"
+                    android:textAlignment="textEnd"
+                    android:textSize="45px" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="16px"
+                android:background="#FFFFFF">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Store"
+                    android:layout_marginLeft="12px"
+                    android:layout_marginVertical="12px"
+                    android:textSize="45px"/>
+
+                <TextView
+                    android:id="@+id/tvStoreName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="12px"
+                    android:layout_marginRight="12px"
+                    android:text="Nhà hàng Ahihi"
+                    android:textAlignment="textEnd"
+                    android:textSize="45px" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="16px"
+                android:background="#FFFFFF">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Address"
+                    android:layout_marginLeft="12px"
+                    android:layout_marginVertical="12px"
+                    android:textSize="45px"/>
+
+                <TextView
+                    android:id="@+id/tvStoreAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="12px"
+                    android:layout_marginLeft="28px"
+                    android:layout_marginRight="12px"
+                    android:text="109 Đào Tấn, Ngọc Khánh, HN ha ha ha ha ha ha ha ha ha ha ha"
+                    android:textAlignment="textEnd"
+                    android:textSize="45px" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="16px"
+                android:layout_marginTop="16px"
+                android:background="#FFFFFF">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Date"
+                    android:layout_marginLeft="12px"
+                    android:layout_marginVertical="12px"
+                    android:textSize="45px"/>
+
+                <TextView
+                    android:id="@+id/tvDay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="12px"
+                    android:layout_marginRight="12px"
+                    android:text="00/0/0000"
+                    android:textAlignment="textEnd"
+                    android:textSize="45px" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="16px"
+                android:background="#FFFFFF">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Slot Time"
+                    android:layout_marginLeft="12px"
+                    android:layout_marginVertical="12px"
+                    android:textSize="45px"/>
+
+                <TextView
+                    android:id="@+id/tvTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="12px"
+                    android:layout_marginRight="12px"
+                    android:text="09:00"
+                    android:textAlignment="textEnd"
+                    android:textSize="45px" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="16px"
+                android:background="#FFFFFF">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Adult slots"
+                    android:layout_marginLeft="12px"
+                    android:layout_marginVertical="12px"
+                    android:textSize="45px"/>
+
+                <TextView
+                    android:id="@+id/tvAdults"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="12px"
+                    android:layout_marginRight="12px"
+                    android:text="2 slots"
+                    android:textAlignment="textEnd"
+                    android:textSize="45px" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="16px"
+                android:background="#FFFFFF">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Children slots"
+                    android:layout_marginLeft="12px"
+                    android:layout_marginVertical="12px"
+                    android:textSize="45px"/>
+
+                <TextView
+                    android:id="@+id/tvChildren"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="12px"
+                    android:layout_marginRight="12px"
+                    android:text="0 slots"
+                    android:textAlignment="textEnd"
+                    android:textSize="45px" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="16px"
+                android:background="#FFFFFF">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Note"
+                    android:layout_marginLeft="12px"
+                    android:layout_marginVertical="12px"
+                    android:textSize="45px"/>
+
+                <TextView
+                    android:id="@+id/tvDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="12px"
+                    android:layout_marginRight="12px"
+                    android:text="Coming early ..."
+                    android:textAlignment="textEnd"
+                    android:textSize="45px" />
+            </LinearLayout>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="40px"
+                android:text="BACK"
+                android:background="@color/colorPrimaryDark"
+                android:onClick="handleBack"/>
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+
+</LinearLayout>

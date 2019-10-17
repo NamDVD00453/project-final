@@ -2,13 +2,17 @@ package com.vinamine.mc.rest;
 
 import android.graphics.Bitmap;
 
-public class VoucherForView {
+import java.io.Serializable;
+
+public class VoucherForView implements Serializable {
     private String id;
     private String name;
     private String store;
     private Bitmap icon;
     private Bitmap image;
     private String percent;
+    private String startTime;
+    private String endTime;
 
     public VoucherForView(String id, String name, String store, Bitmap icon, Bitmap image, String percent) {
         this.id = id;
@@ -68,5 +72,21 @@ public class VoucherForView {
 
     public void setPercent(String percent) {
         this.percent = percent;
+    }
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 }

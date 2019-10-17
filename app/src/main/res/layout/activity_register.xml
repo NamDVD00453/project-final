@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegisterActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/registerLayout"
+    tools:ignore="InvalidId">
     <EditText
         android:id="@+id/etPhone"
         android:layout_width="match_parent"
@@ -59,7 +61,7 @@
         android:text="Tôi đồng ý với điều khoản sử dụng." />
 
     <Button
-        android:id="@+id/btLogin"
+        android:id="@+id/btRegister"
         android:layout_width="match_parent"
         android:layout_height="42dp"
         android:layout_marginHorizontal="90dp"

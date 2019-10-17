@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "765469623934",
+    "firebase_url": "https://dealhunter-4a072.firebaseio.com",
+    "project_id": "dealhunter-4a072",
+    "storage_bucket": "dealhunter-4a072.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:765469623934:android:ac4774b1175b30ebdeba2f",
+        "android_client_info": {
+          "package_name": "com.vinamine.mc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "765469623934-5caimvs8ov57vdvov1ehq8l89bursk05.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTkXv-NVQKThKtErrkr11ZRydQlyoGvYM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "765469623934-5caimvs8ov57vdvov1ehq8l89bursk05.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

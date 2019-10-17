@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/cardview_shadow_start_color">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvOrderDate"
+        android:text="09/10/2019"
+        android:layout_marginHorizontal="8px"
+        android:layout_marginTop="8px"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/cardview_light_background">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingVertical="10px"
+            android:layout_margin="8px">
+
+            <TextView
+                android:id="@+id/tvOrderId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="#99" />
+
+            <TextView
+                android:id="@+id/tvOrderStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="0px"
+                android:text="Chưa hoàn thành"
+                android:textAlignment="textEnd"
+                android:textColor="#FF0000" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/cardview_light_background"
+        android:layout_marginTop="2px">
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="8px"
+            android:src="@drawable/done"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvVoucherCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Voucher EVXPXDWJ6G10"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/tvOrderStore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nhà hàng King BBQ"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvOrderAddr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="109 Đào Tấn, Ngọc Khánh, HN" />
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textAlignment="textEnd">
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="8px"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="Đặt lại"
+                android:background="@drawable/custombutton"
+                android:textSize="32px"
+                android:textColor="#FFFFFF"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/cardview_light_background"
+        android:layout_marginTop="2px">
+
+        <TextView
+            android:id="@+id/tvOrderTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="24px"
+            android:layout_marginLeft="8px"
+            android:text="14:30 - Discount 20 %"
+            android:textAlignment="center"
+            android:textSize="12dp" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="textEnd">
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="8px"
+                android:layout_marginVertical="24px"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="Đánh giá"
+                android:background="@drawable/custombutton"
+                android:textSize="32px"
+                android:textColor="#FFFFFF"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -6,4 +6,10 @@
         android:orderInCategory="100"
         android:title="@string/action_main_settings"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_quit"
+        android:orderInCategory="100"
+        android:title="Thoát"
+        app:showAsAction="never"
+        android:onClick="handlQuit"/>
 </menu>

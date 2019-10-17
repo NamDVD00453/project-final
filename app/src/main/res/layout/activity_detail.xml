@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DetailActivity"
+    android:layout_margin="16px"
+    android:id="@+id/main_detail"
+    android:focusableInTouchMode="true">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/ivImage"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/maxresdefault" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16px"
+                android:orientation="horizontal"
+                android:background="@color/cardview_shadow_end_color">
+
+                <ImageView
+                    android:id="@+id/ivBrand"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/rounded"
+                    android:src="@drawable/avatar1" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/tvStore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Store name ex: King BBQ"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:id="@+id/tvName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6px"
+                        android:text="King BBQ: ĐI 4 TẶNG 1  VỚI SUẤT BUFFET 349K A A A A"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6px"
+                        android:text="Đồ Uống"
+                        android:textSize="24px"
+                        android:textStyle="italic"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="6px">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvDesc"
+                    android:text="King BBQ - Vua nướng Hàn Quốc, hệ thống nhà hàng buffet lẩu, nướng hương vị xứ kim chi hàng đầu Việt Nam. Xem ưu đãi đặt chỗ mới nhất từ King BBQ Buffet trên Dealhunter"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16px"
+                    android:text="Chọn cửa hàng áp dụng"
+                    android:textColor="@color/colorPrimaryDark"/>
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="90px"
+                    android:id="@+id/spAddress"
+                    android:textColor="#000000"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16px"
+                    android:text="Số lượng (SL>0)"
+                    android:textColor="@color/colorPrimaryDark"/>
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="90px"
+                    android:id="@+id/spSlot"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16px"
+                    android:text="Thời gian"
+                    android:textColor="@color/colorPrimaryDark"/>
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="90px"
+                    android:id="@+id/spTime"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16px"
+                    android:text="Ngày"
+                    android:textColor="@color/colorPrimaryDark"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/etDate"
+                        android:hint="dd/mm/yyyy"
+                        android:layout_weight="1"/>
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="PICK"
+                        android:layout_weight="4"
+                        android:background="@color/colorLoginBackground"
+                        android:onClick="handleDatePicker"/>
+                </LinearLayout>
+
+
+
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Ghi chú:"
+                    android:lines="4"
+                    android:id="@+id/etNote"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:dividerPadding="10px">
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Gọi cửa hàng"
+                        android:shadowColor="@color/cardview_shadow_end_color"
+                        android:background="@color/colorLoginBackground"
+                        android:layout_marginRight="10px"
+                        android:id="@+id/btCall"/>
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Chỉ đường"
+                        android:shadowColor="@color/cardview_shadow_end_color"
+                        android:background="@color/colorLoginBackground"
+                        android:layout_marginLeft="10px"
+                        android:id="@+id/btNavigate"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16px"
+        android:layout_weight="13"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:text="ĐẶT CHỖ NGAY"
+        android:onClick="handleTransaction">
+
+    </Button>
+
+
+</LinearLayout>

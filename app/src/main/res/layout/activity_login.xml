@@ -4,16 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:id="@+id/loginLayout"
+    tools:ignore="InvalidId">
 
     <EditText
-        android:id="@+id/etPhone"
+        android:id="@+id/etEmail"
         android:layout_width="match_parent"
         android:layout_marginHorizontal="32dp"
         android:layout_marginTop="60dp"
         android:layout_height="42dp"
-        android:inputType="numberDecimal"
-        android:hint="Số điện thoại" />
+        android:inputType="textEmailAddress"
+        android:hint="Email"
+        android:text="namdvd00453@fpt.edu.vn"/>
 
     <EditText
         android:id="@+id/etPassword"
@@ -22,7 +25,8 @@
         android:layout_marginTop="20dp"
         android:inputType="textPassword"
         android:layout_height="42dp"
-        android:hint="Mật khẩu" />
+        android:hint="Mật khẩu"
+        android:text="123123aa"/>
 
     <CheckBox
         android:id="@+id/cbSave"
@@ -59,5 +63,10 @@
         android:text="Quên mật khẩu?"
         android:textColor="@color/colorLoginBackground"
         android:onClick="handleForgot"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/loginView"
+        android:orientation="vertical" />
 
 </LinearLayout>

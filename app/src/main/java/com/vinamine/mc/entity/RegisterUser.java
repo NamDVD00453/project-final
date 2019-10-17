@@ -60,6 +60,7 @@ public class RegisterUser {
 
     public RegisterBody toBody() {
         RegisterBody registerBody = new RegisterBody();
+        registerBody.setPhone(this.phone);
         registerBody.setEmail(this.email);
         registerBody.setFullName(this.fullName);
         registerBody.setPassword(this.password);

@@ -1,18 +1,15 @@
 package com.vinamine.mc;
 
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
+import android.os.Process;
 import android.os.StrictMode;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -28,20 +25,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.vinamine.mc.config.AsyncDownload;
+import com.vinamine.mc.config.AvatarDownload;
 import com.vinamine.mc.config.Config;
-import com.vinamine.mc.config.DownloadBitmapInterface;
-import com.vinamine.mc.data.CustomPagerAdapter;
+import com.vinamine.mc.config.ItemLoad;
 import com.vinamine.mc.rest.RetroController;
 import com.vinamine.mc.rest.Voucher;
-import com.vinamine.mc.util.VoucherAdapter;
+import com.vinamine.mc.rest.VoucherForView;
+import com.vinamine.mc.rest.login.LoginResponse;
+import com.vinamine.mc.util.Util;
+import com.vinamine.mc.util.VoucherForViewAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
-import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, DownloadBitmapInterface {
+        implements NavigationView.OnNavigationItemSelectedListener {
+    private static VoucherForViewAdapter voucherForViewAdapter;
     Intent intent;
     NavigationView navigationView;
     View headerView;
@@ -49,38 +49,57 @@ public class MainActivity extends AppCompatActivity
     Timer timer;
     final long DELAY_MS = 500;
     final long PERIOD_MS = 3000;
-    final Context context = this;
+    private static Context context;
     List<Voucher> listVouchers;
     RetroController retroController;
+
+    public static List<VoucherForView> voucherForViewList = new ArrayList<>();
+    public static RecyclerView rvVoucher;
+
+    public static void loadAllRv(List<Voucher> listVouchers) {
+
+        for (int i = listVouchers.size()-1; i >= 0; i--) {
+            Voucher v = listVouchers.get(i);
+            ItemLoad itemLoad = new ItemLoad(v);
+            itemLoad.execute();
+        }
+    }
+
+    public static Context getAppContext(){
+        return MainActivity.context;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        voucherForViewList.clear();
+        Util.mainContext = getApplicationContext();
+        retroController = new RetroController();
+        retroController.getAllVouchers();
+        System.out.println("Util: Main context null? " + Util.mainContext == null);
+        MainActivity.context = getApplicationContext();
         int SDK_INT = android.os.Build.VERSION.SDK_INT;
-        if (SDK_INT > 8)
-        {
+        if (SDK_INT > 8) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
                     .permitAll().build();
             StrictMode.setThreadPolicy(policy);
             //your codes here
-
         }
 
         retroController = new RetroController();
-        listVouchers = retroController.getAllVouchers();
-
+        listVouchers = retroController.listVouchers;
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -102,28 +121,23 @@ public class MainActivity extends AppCompatActivity
 
         intent = this.getIntent();
 
-        if (Config.ISLOGGED){
-            setContent();
+        if (Config.ISLOGGED) {
+            LoginResponse loginResponse = (LoginResponse) intent.getSerializableExtra("loginUser");
+            new AvatarDownload((ImageView) headerView.findViewById(R.id.imageView))
+                    .execute(loginResponse.getData().getAccount().getAvatar());
+            TextView tvUsername = headerView.findViewById(R.id.tvUsername);
+            tvUsername.setText(loginResponse.getData().getAccount().getFullName());
         } else {
             TextView tvUsername = headerView.findViewById(R.id.tvUsername);
             tvUsername.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    intent.setFlags(intent.getFlags() | Intent.FLAG_ACTIVITY_NO_HISTORY);
                     startActivity(intent);
                 }
             });
         }
-
-
-        RecyclerView rvVoucher = findViewById(R.id.rvVoucher);
-        VoucherAdapter voucherAdapter = new VoucherAdapter(this, listVouchers);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        rvVoucher.setLayoutManager(layoutManager);
-//        rvVoucher.setItemAnimator(new DefaultItemAnimator());
-        rvVoucher.setAdapter(voucherAdapter);
-        System.out.println("Item count: " + voucherAdapter.getItemCount());
-
 //        final ViewPager viewPager = findViewById(R.id.vpTop);
 //        CustomPagerAdapter adapter = new CustomPagerAdapter(this);
 //        viewPager.setAdapter(adapter);
@@ -144,6 +158,12 @@ public class MainActivity extends AppCompatActivity
 //                handler.post(Update);
 //            }
 //        }, DELAY_MS, PERIOD_MS);
+        rvVoucher = findViewById(R.id.rvVoucher);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
+        rvVoucher.setLayoutManager(layoutManager);
+        rvVoucher.setAdapter(voucherForViewAdapter);
+
+
 
         final SwipeRefreshLayout swLayout = findViewById(R.id.swLayout);
         swLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -151,28 +171,27 @@ public class MainActivity extends AppCompatActivity
             public void onRefresh() {
 
                 Toast.makeText(context, "Homepage refresh!", Toast.LENGTH_SHORT).show();
-                listVouchers = retroController.getAllVouchers();
-                RecyclerView rvVoucher = findViewById(R.id.rvVoucher);
-                VoucherAdapter voucherAdapter = new VoucherAdapter(getApplicationContext(), listVouchers);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        rvVoucher.setLayoutManager(layoutManager);
-//        rvVoucher.setItemAnimator(new DefaultItemAnimator());
-                rvVoucher.setAdapter(voucherAdapter);
-                System.out.println("Item count: " + voucherAdapter.getItemCount());
+                voucherForViewList.clear();
+
+                retroController.getAllVouchers();
                 swLayout.setRefreshing(false);
             }
         });
     }
 
-
-
+    public static void reloadRv(Context c){
+        System.out.println("List voucher for view count: " + voucherForViewList.size());
+        System.out.println(c == null);
+        voucherForViewAdapter = new VoucherForViewAdapter(c, voucherForViewList);
+        rvVoucher.setAdapter(voucherForViewAdapter);
+    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            System.exit(1);
         }
     }
 
@@ -194,7 +213,6 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -203,46 +221,50 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
-//        if (id == R.id.nav_camera) {
-//            // Handle the camera action
-//        } else if (id == R.id.nav_gallery) {
-//
-//        } else if (id == R.id.nav_slideshow) {
-//
-//        } else if (id == R.id.nav_manage) {
-//            Intent intent = new Intent(MainActivity.this, ServerChat.class);
-//            startActivity(intent);
-//        } else if (id == R.id.nav_share) {
-//
-//        } else if (id == R.id.nav_send) {
-//
-//        }
-
+        if (id == R.id.nav_logout){
+            if (Config.ISLOGGED){
+                Config.ISLOGGED = false;
+                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.clear();
+                editor.commit();
+                finish();
+                startActivity(getIntent());
+            }
+        } else if (id == R.id.nav_order) {
+            if (Config.ISLOGGED) {
+                Intent intent = new Intent(getAppContext(), OrderList.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getAppContext().startActivity(intent);
+            } else {
+                Snackbar.make(headerView, "You need to login!", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        } else {
+            Snackbar.make(headerView, "Under construction!", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+        }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
-    @Override
-    public void processFinish(Bitmap output) {
-        ImageView imageView = findViewById(R.id.imageView);
-        imageView.setImageBitmap(output);
+    public void handlQuit(MenuItem item) {
+        Process.killProcess(Process.myPid());
+        System.exit(1);
     }
 
-    private void setContent(){
+//    @Override
+//    public void processFinish(Bitmap output) {
+//        ImageView imageView = findViewById(R.id.imageView);
+//        imageView.setImageBitmap(output);
+//    }
 
-        AsyncDownload asyncDownload = new AsyncDownload();
-        asyncDownload.delegate = this;
-        asyncDownload.execute("https://i.imgur.com/SsQx3LA.png");
-
-
-
-        TextView tvUsername = headerView.findViewById(R.id.tvUsername);
-        tvUsername.setText("0982676254");
-
-        TextView tvEmail = headerView.findViewById(R.id.tvEmail);
-        tvEmail.setText("dnzakmin@gmail.com");
-
-    }
+//    private void setContent() {
+//        TextView tvUsername = headerView.findViewById(R.id.tvUsername);
+//        tvUsername.setText("0982676254");
+//
+//        TextView tvEmail = headerView.findViewById(R.id.tvEmail);
+//        tvEmail.setText("dnzakmin@gmail.com");
+//    }
 }
